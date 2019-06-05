@@ -119,6 +119,7 @@ public class UMass {
     public static final String PASSWORD_ID = "pwd";
     public static final String OLD_LOGIN_BUTTON_SELECTOR = "#login > p:nth-child(5) > input[type=\"submit\"]";
     public static final String LOGIN_BUTTON_SELECTOR = "#login > p:nth-child(7) > input[type=\"submit\"]";
+    public static final String PW_CHANGE_NO_SELECTOR = "#\\$ICField3";
 
     // Student Center
     public static final String ENROLLMENT_LINK_SELECTOR = "#DERIVED_SSS_SCR_SSS_LINK_ANCHOR1";

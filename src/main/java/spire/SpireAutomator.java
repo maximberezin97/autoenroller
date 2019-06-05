@@ -380,9 +380,12 @@ public class SpireAutomator {
             // and then loads it into the driver as the main webpage.
             LOGGER.info("Loading \"iframe\" into the driver.");
             driver.get(UMass.waitForElement(driver, By.tagName("iframe")).getAttribute("src"));
-            // Wait in case there is an error popup (seen on Firefox, not Chrome).
-            LOGGER.info("Sleeping for " + UMass.WAIT_INTERVAL + " milliseconds.");
-            UMass.sleep(UMass.WAIT_INTERVAL);
+            // Check if there is a password update prompt. If there is, click Not Now.
+            LOGGER.info("Checking for a password change prompt...");
+            if (UMass.isElementFound(driver, UMass.TIMEOUT_INTERVAL, By.cssSelector(UMass.PW_CHANGE_NO_SELECTOR))) {
+                LOGGER.info("Clicking CSS selector \"" + UMass.PW_CHANGE_NO_SELECTOR + "\"");
+                driver.findElement(By.cssSelector(UMass.PW_CHANGE_NO_SELECTOR)).click();
+            }
 
             // If no preferred automator was provided, prompt for one.
             while (automator == null) {
